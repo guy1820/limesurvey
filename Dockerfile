@@ -35,7 +35,8 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 RUN versions=(${LIMESURVEY_VERSION//+/ }) && \
     version=${versions[1]} && \
-    sed -r -i "s/(config\['buildnumber'\] = ')(.*)('\;$)/\1${version}\3/g" /app/application/config/version.php
+    sed -r -i "s/(config\['buildnumber'\] = ')(.*)('\;$)/\1${version}\3/g" /app/application/config/version.php && \
+    chmod +777 /app/tmp/runtime
 
 VOLUME /app/upload
 VOLUME /app/plugins
